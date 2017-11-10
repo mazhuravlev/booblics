@@ -5698,12 +5698,13 @@ class FakeDataProvider extends DataProvider_1.DataProvider {
         let transaction = doc.createTransaction();
         transaction.start();
         doc._setID('84F73DB1-51B5-4DA2-BB55-7C9070400E18');
-        const levelsCount = 10;
+        const colors = ['#ff4000', '#ffbf00', '#00ff80', '#00bfff', '#8000ff', '#ff00ff', '#00b3b3'];
+        const levelsCount = colors.length;
         // Сначала нужно создать набор уровней, на которых будут размещаться узлы и условия.
         for (let n = 0; n < levelsCount; ++n) {
             let name = 'Level ' + n;
             let code = 'LEV-' + n;
-            let color = '#FFFF';
+            let color = colors[n];
             let autoNum = true;
             doc.getContext().pushLevel(name, code, color, autoNum);
         }
@@ -5773,12 +5774,13 @@ class FakeDataProvider extends DataProvider_1.DataProvider {
         let transaction = doc.createTransaction();
         transaction.start();
         doc._setID('DBC9A89B-B893-4D69-AF85-D296631BBE6C');
-        const levelsCount = 10;
+        const colors = ['#ff4000', '#ffbf00', '#00ff80', '#00bfff', '#8000ff', '#ff00ff', '#00b3b3'];
+        const levelsCount = colors.length;
         // Сначала нужно создать набор уровней, на которых будут размещаться узлы и условия.
         for (let n = 0; n < levelsCount; ++n) {
             let name = 'Level ' + n;
             let code = 'LEV-' + n;
-            let color = '#FFFF';
+            let color = colors[n];
             let autoNum = true;
             doc.getContext().pushLevel(name, code, color, autoNum);
         }
@@ -6635,7 +6637,7 @@ var _a;
 /***/ "../../../../../src/app/components/editor/editor.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div style=\"width: 100%; user-select: none;\" class=\"buttons-panel\">\r\n  <button (click)=\"do('un')\" title=\"Отменить\"><i class=\"material-icons md-36\">undo</i></button>\r\n  <button (click)=\"do('re')\" title=\"Повторить\"><i class=\"material-icons md-36\">redo</i></button>\r\n  <button (click)=\"createBlock()\" title=\"Cоздать блок\"><i class=\"material-icons md-36\">label</i></button>\r\n  <button (click)=\"createCondition()\" title=\"Cоздать условие\"><i class=\"material-icons md-36\">label_outline</i></button>\r\n  <!--<button (click)=\"deleteSelected()\" title=\"Удалить выбранное\"><i class=\"material-icons md-36\">delete_forever</i></button>-->\r\n  <!--<button (click)=\"alignHorizontal()\" title=\"Выровнять горизонтально\"><i class=\"material-icons md-36\">vertical_align_top</i></button>-->\r\n  <!--<button (click)=\"distributeHorizontal()\" title=\"Распределить горизонтально\"><i class=\"material-icons md-36\">view_week</i></button>-->\r\n  <!--<button (click)=\"alignVertical()\" title=\"Выровнять вертикально\"><i class=\"material-icons md-36\">format_align_left</i></button>-->\r\n  <!--<button (click)=\"distributeVertical()\" title=\"Распределить вертикально\"><i class=\"material-icons md-36\">reorder</i></button>-->\r\n  <!--<button (click)=\"alignHorizontalCenter()\" title=\"Выровнять горизонтально по центру\"><i class=\"material-icons md-36\">vertical_align_center</i></button>-->\r\n  <!--<button (click)=\"alignVerticalCenter()\" title=\"Выровнять вертикально по центру\"><i class=\"material-icons md-36\">format_align_center</i></button>-->\r\n  <button (click)=\"autoLayout()\" title=\"Авторасстановка\"><i class=\"material-icons md-36\">flash_auto</i></button>\r\n  <button (click)=\"zoomToFit()\" title=\"Показать все\"><i class=\"material-icons md-36\">zoom_out_map</i></button>\r\n  <button (click)=\"syncDocument()\"><i class=\"material-icons md-36\" title=\"Синхронизировать документ\">sync</i></button>\r\n  <button (click)=\"exportImage()\"><i class=\"material-icons md-36\" title=\"Экспорт в PNG\">burst_mode</i></button>\r\n</div>\r\n<!--<div *ngIf=\"!document\">-->\r\n<!--<mat-card>Документ не загружен</mat-card>-->\r\n<!--</div>-->\r\n<canvas #pixi class=\"no-select\"></canvas>\r\n"
+module.exports = "<div style=\"width: 100%; user-select: none;\" class=\"buttons-panel\">\r\n  <button (click)=\"do('un')\" title=\"Отменить\"><i class=\"material-icons md-36\">undo</i></button>\r\n  <button (click)=\"do('re')\" title=\"Повторить\"><i class=\"material-icons md-36\">redo</i></button>\r\n  <button (click)=\"createBlock()\" title=\"Cоздать блок\"><i class=\"material-icons md-36\">label</i></button>\r\n  <button (click)=\"createCondition()\" title=\"Cоздать условие\"><i class=\"material-icons md-36\">label_outline</i></button>\r\n  <!--<button (click)=\"deleteSelected()\" title=\"Удалить выбранное\"><i class=\"material-icons md-36\">delete_forever</i></button>-->\r\n  <!--<button (click)=\"alignHorizontal()\" title=\"Выровнять горизонтально\"><i class=\"material-icons md-36\">vertical_align_top</i></button>-->\r\n  <!--<button (click)=\"distributeHorizontal()\" title=\"Распределить горизонтально\"><i class=\"material-icons md-36\">view_week</i></button>-->\r\n  <!--<button (click)=\"alignVertical()\" title=\"Выровнять вертикально\"><i class=\"material-icons md-36\">format_align_left</i></button>-->\r\n  <!--<button (click)=\"distributeVertical()\" title=\"Распределить вертикально\"><i class=\"material-icons md-36\">reorder</i></button>-->\r\n  <!--<button (click)=\"alignHorizontalCenter()\" title=\"Выровнять горизонтально по центру\"><i class=\"material-icons md-36\">vertical_align_center</i></button>-->\r\n  <!--<button (click)=\"alignVerticalCenter()\" title=\"Выровнять вертикально по центру\"><i class=\"material-icons md-36\">format_align_center</i></button>-->\r\n  <button (click)=\"autoLayout()\" title=\"Авторасстановка\"><i class=\"material-icons md-36\">flash_auto</i></button>\r\n  <button (click)=\"zoomToFit()\" title=\"Показать все\"><i class=\"material-icons md-36\">zoom_out_map</i></button>\r\n  <button (click)=\"syncDocument()\"><i class=\"material-icons md-36\" title=\"Синхронизировать документ\">sync</i></button>\r\n  <button (click)=\"exportImage()\"><i class=\"material-icons md-36\" title=\"Экспорт в PNG\">burst_mode</i></button>\r\n  <button [matMenuTriggerFor]=\"menu\"><i class=\"material-icons md-36\" title=\"Показать вложенные\">collections_bookmark</i></button>\r\n  <mat-menu #menu=\"matMenu\">\r\n    <button *ngFor=\"let level of levels;\" mat-menu-item (click)=\"showNested(level)\">{{level}}</button>\r\n  </mat-menu>\r\n  <button (click)=\"hideNested()\"><i class=\"material-icons md-36\" title=\"Свернуть все\">collections_bookmark</i></button>\r\n\r\n</div>\r\n<!--<div *ngIf=\"!document\">-->\r\n<!--<mat-card>Документ не загружен</mat-card>-->\r\n<!--</div>-->\r\n<canvas #pixi class=\"no-select\"></canvas>\r\n"
 
 /***/ }),
 
@@ -6697,10 +6699,13 @@ const toast_service_1 = __webpack_require__("../../../../../src/app/services/toa
 const observable_listener_1 = __webpack_require__("../../../../../src/app/observable-listener.ts");
 __webpack_require__("../../../../rxjs/add/operator/mergeMap.js");
 const delete_button_1 = __webpack_require__("../../../../../src/app/components/editor/objects/delete-button.ts");
+var Container = PIXI.Container;
+const signal_r_service_1 = __webpack_require__("../../../../../src/app/services/signal-r.service.ts");
 let EditorComponent = class EditorComponent {
-    constructor(ngZone, toastService, dataService) {
+    constructor(ngZone, toastService, sirnalr, dataService) {
         this.ngZone = ngZone;
         this.toastService = toastService;
+        this.sirnalr = sirnalr;
         this.dataService = dataService;
         this.select = new core_1.EventEmitter(true);
         this.viewRootChange = new core_1.EventEmitter(true);
@@ -6710,11 +6715,13 @@ let EditorComponent = class EditorComponent {
         this.dragObjects = [];
         this.ticker = new PIXI.ticker.Ticker();
         this.subscriptions = [];
+        this.levels = [];
     }
     ngOnInit() {
         this.subscriptions.push(this.navigationSource.subscribe((id) => {
-            if (id !== this.currentViewRootNode.id)
+            if (id !== this.currentViewRootNode.id) {
                 this.navigate(id);
+            }
         }));
         this.subscriptions.push(this.documentSource.subscribe((document) => {
             this.document = document;
@@ -6876,16 +6883,14 @@ let EditorComponent = class EditorComponent {
         ticker.start();
     }
     initLoader(document) {
-        const afterLoad = () => {
-            this.createGame(document, document.getContext().getRootNode().id);
-        };
+        const afterLoad = () => this.createGame(document, document.getContext().getRootNode().id);
         const getLoaderResult = get_loader_1.getLoader(afterLoad);
         this.loader = getLoaderResult.loader;
         if (!getLoaderResult.willOnComplete)
             afterLoad();
     }
     startDrag(e) {
-        this.dragObjects = this.selectedObjects.map(o => {
+        this.dragObjects = this.selectedObjects.filter(o => o.canDrag).map(o => {
             const globalPos = o.getGlobalPosition();
             // TODO: исправить искривление смещения при масштабирования
             return {
@@ -6925,6 +6930,10 @@ let EditorComponent = class EditorComponent {
     createGame(document, rootNodeId) {
         this.viewRootChange.emit(rootNodeId);
         const rootNode = this.currentViewRootNode = document.getContext().getObject(rootNodeId);
+        let levels = [];
+        this.document.getContext().levels.forEach((k, v) => levels.push(k.name));
+        const index = levels.indexOf(this.currentViewRootNode.getLevel().name);
+        this.levels = levels.splice(index + 1, levels.length - 1);
         this.zoom = new zoom_1.Zoom();
         this.updateZoom();
         this.phantomConnection = new phantom_connection_1.PhantomConnection();
@@ -6937,6 +6946,7 @@ let EditorComponent = class EditorComponent {
                     const levelNode = nodeValue;
                     const block = this.createBlockFromLevelNode(levelNode);
                     nodes.set(levelNode.id, block);
+                    this.game.addChild(block);
                     levelNode.getInputConnections().concat(levelNode.getOutputConnections()).forEach(x => {
                         if (!connections.has(x.id))
                             connections.set(x.id, x);
@@ -6984,10 +6994,10 @@ let EditorComponent = class EditorComponent {
         block.blockCode = levelNode.code;
         block.blockHours = levelNode.laborCosts || 0;
         block.id = levelNode.id;
+        block.color = levelNode.getLevel().color;
         block.setTicker(this.ticker);
         block.setLoader(this.loader);
         block.start();
-        this.game.addChild(block);
         return block;
     }
     notifySelect(selectedObjects) {
@@ -7229,6 +7239,7 @@ let EditorComponent = class EditorComponent {
                 case TypeNames_1.TypeNames.LevelNode:
                     const block = this.createBlockFromLevelNode(obj);
                     block.setPosition(new PIXI.Point(this.renderer.width / 2 - block.width, this.renderer.height / 2 - block.height));
+                    this.game.addChild(block);
                     this.setSelectedObjects(block);
                     break;
                 case TypeNames_1.TypeNames.Condition:
@@ -7336,6 +7347,87 @@ let EditorComponent = class EditorComponent {
         this.game.addChild(condition);
         return condition;
     }
+    showNested(levelName) {
+        if (this.selectedObjects.length < 1)
+            return;
+        else if (this.selectedObjects.some(x => x instanceof condition_1.Condition))
+            return;
+        else if (this.selectedObjects[0]) {
+            const depth = this.levels.indexOf(levelName) + 1;
+            const rootBlock = this.selectedObjects[0];
+            this.addNestedBlocks(rootBlock, depth, 0.75);
+            rootBlock.update();
+        }
+    }
+    hideNested() {
+        this.game.children.filter(x => x instanceof simple_block_1.SimpleBlock && x.embeddedContainer.children.length > 0).forEach(x => {
+            x.embeddedContainer = undefined;
+            x.update();
+        });
+    }
+    addNestedBlocks(rootBlock, depth, scale) {
+        if (depth === 0)
+            return;
+        const nestedNodes = this.document.getContext().getLevelNode(rootBlock.id).getChildrenNodes();
+        const nestedConditions = this.document.getContext().getLevelNode(rootBlock.id).getChildrenConditions();
+        const childNodes = nestedNodes.concat(nestedConditions);
+        let embeddedContainer = new Container();
+        let blocksContainer = new Container();
+        const nodes = new Map();
+        const connections = new Map();
+        childNodes.forEach((nodeValue) => {
+            switch (nodeValue.typeName) {
+                case TypeNames_1.TypeNames.LevelNode:
+                    const levelNode = nodeValue;
+                    const block = this.createBlockFromLevelNode(levelNode);
+                    block.canDrag = false;
+                    this.addNestedBlocks(block, depth - 1, scale - 0.25);
+                    nodes.set(levelNode.id, block);
+                    blocksContainer.addChild(block);
+                    levelNode.getInputConnections().concat(levelNode.getOutputConnections()).forEach(x => {
+                        if (!connections.has(x.id))
+                            connections.set(x.id, x);
+                    });
+                    break;
+                case TypeNames_1.TypeNames.Condition:
+                    const iCondition = nodeValue;
+                    const condition = new condition_1.Condition(iCondition.name);
+                    condition.id = iCondition.id;
+                    condition.setTicker(this.ticker);
+                    condition.setLoader(this.loader);
+                    condition.canDrag = false;
+                    iCondition.getVariants().forEach(variant => {
+                        const _case = new case_1.Case(variant.id, variant.text, condition);
+                        condition.addCase(_case);
+                        nodes.set(variant.id, _case);
+                    });
+                    nodes.set(iCondition.id, condition);
+                    blocksContainer.addChild(condition);
+                    iCondition.getInputConnections().concat(_.flatMap(iCondition.getVariants().map(v => v.getOutputConnections()))).forEach(x => {
+                        if (!connections.has(x.id))
+                            connections.set(x.id, x);
+                    });
+                    break;
+                default:
+                    throw new Error(`Непонятный тип ${nodeValue.typeName}`);
+            }
+        });
+        let connectionsContatiner = new Container();
+        connections.forEach((iconnection, id) => {
+            const source = nodes.get(iconnection.sourceId);
+            const target = nodes.get(iconnection.targetId);
+            const connection = this.factoryConnection({
+                sourcePort: source.getOutputPorts()[0],
+                targetPort: target.getInputPort(),
+                connectionId: id
+            });
+            connectionsContatiner.addChild(connection);
+        });
+        this.aligner.autoAlign(blocksContainer.children);
+        embeddedContainer.addChild(connectionsContatiner, blocksContainer);
+        embeddedContainer.scale.set(scale, scale);
+        rootBlock.embeddedContainer = embeddedContainer;
+    }
 };
 __decorate([
     core_1.ViewChild('pixi'),
@@ -7369,10 +7461,10 @@ EditorComponent = __decorate([
         template: __webpack_require__("../../../../../src/app/components/editor/editor.component.html"),
         styles: [__webpack_require__("../../../../../src/app/components/editor/editor.component.scss")]
     }),
-    __metadata("design:paramtypes", [typeof (_e = typeof core_1.NgZone !== "undefined" && core_1.NgZone) === "function" && _e || Object, typeof (_f = typeof toast_service_1.ToastService !== "undefined" && toast_service_1.ToastService) === "function" && _f || Object, typeof (_g = typeof data_service_1.DataService !== "undefined" && data_service_1.DataService) === "function" && _g || Object])
+    __metadata("design:paramtypes", [typeof (_e = typeof core_1.NgZone !== "undefined" && core_1.NgZone) === "function" && _e || Object, typeof (_f = typeof toast_service_1.ToastService !== "undefined" && toast_service_1.ToastService) === "function" && _f || Object, typeof (_g = typeof signal_r_service_1.SignalRService !== "undefined" && signal_r_service_1.SignalRService) === "function" && _g || Object, typeof (_h = typeof data_service_1.DataService !== "undefined" && data_service_1.DataService) === "function" && _h || Object])
 ], EditorComponent);
 exports.EditorComponent = EditorComponent;
-var _a, _b, _c, _d, _e, _f, _g;
+var _a, _b, _c, _d, _e, _f, _g, _h;
 //# sourceMappingURL=editor.component.js.map
 
 /***/ }),
@@ -8734,6 +8826,17 @@ class EditorObject extends PIXI.Container {
         this.isSelected = false;
         this._positionChangedSubject = new Subject_1.Subject();
         this.onPositionChanged = this._positionChangedSubject.asObservable();
+        this.canDrag = true;
+        this._color = 0xFFFFFF;
+    }
+    get color() {
+        var bbggrr = ("000000" + this._color.toString(16)).slice(-6);
+        var rrggbb = bbggrr.substr(4, 2) + bbggrr.substr(2, 2) + bbggrr.substr(0, 2);
+        return "#" + rrggbb;
+    }
+    set color(hex) {
+        hex = hex.substring(1);
+        this._color = parseInt(hex, 16);
     }
     setTicker(ticker) {
         this.ticker = ticker;
@@ -9046,6 +9149,9 @@ class SimpleBlock extends editor_object_1.EditorObject {
         return this;
     }
     update() {
+        if (this.embeddedContainer) {
+            this.embeddedContainer.children.filter(x => x instanceof SimpleBlock).forEach(x => x.update());
+        }
         this.removeChildren();
         this.createEmbeddedContainer();
         let root = this.createMainContent();
@@ -9081,7 +9187,7 @@ class SimpleBlock extends editor_object_1.EditorObject {
         table.addText(this.blockName).alignCenter().colspan(3);
         table.row();
         if (this.embeddedContainer.children.length > 0) {
-            table.add(this.embeddedContainer).colspan(3).padAll(0);
+            table.add(this.embeddedContainer).colspan(3).alignCenter().padAll(20);
             table.row();
         }
         table.addText(this.blockCode).alignCenter(); //.separtor();
@@ -9093,7 +9199,9 @@ class SimpleBlock extends editor_object_1.EditorObject {
         return table;
     }
     createEmbeddedContainer() {
-        this.embeddedContainer = new Container();
+        if (!this.embeddedContainer) {
+            this.embeddedContainer = new Container();
+        }
         //ToDo сделать заполнение вложенными данными
         // let co = new Container();
         // let c1 = new Condition(3, 'fgsfg');
@@ -9107,7 +9215,8 @@ class SimpleBlock extends editor_object_1.EditorObject {
         let box = this._box = new PIXI.Graphics();
         let h = rootTable.height + Math.max(inputReqs.height, outputReqs.height);
         let w = rootTable.width;
-        box.beginFill(0xCBC6BE);
+        // box.beginFill(0xCBC6BE);
+        box.beginFill(this._color);
         box.lineStyle(2);
         box.drawRoundedRect(0, 0, w, h, 10);
         box.endFill();
@@ -9967,16 +10076,7 @@ let SidebarComponent = class SidebarComponent {
     }
     subscribeForm() {
         this.formSubscriptions.push(this.form.valueChanges
-            .debounce(() => Observable_1.Observable.timer(500))
-            .subscribe(value => {
-            if (this.form.dirty) {
-                for (let p in value) {
-                    if (value.p === '*РАЗЛИЧНЫЕ*' || value.p === null)
-                        delete value.p;
-                }
-                this.dataService.updateEntities(this.document, value);
-            }
-        }));
+            .subscribe(value => this.dataService.updateEntitiesFromForm(this.document, value)));
     }
     unsubscribeAll() {
         this.formSubscriptions.forEach(x => x.unsubscribe());
@@ -11605,10 +11705,13 @@ __webpack_require__("../../../../rxjs/add/observable/never.js");
 __webpack_require__("../../../../rxjs/add/observable/of.js");
 __webpack_require__("../../../../rxjs/add/observable/throw.js");
 const TransactionStatus_1 = __webpack_require__("../../../../../src/api/src/ts/enums/TransactionStatus.ts");
+const Subject_1 = __webpack_require__("../../../../rxjs/Subject.js");
 let DataService = class DataService {
     constructor(apiService, toastService) {
         this.apiService = apiService;
         this.toastService = toastService;
+        this.updateSubject = new Subject_1.Subject();
+        this.updateSubject.debounce(() => Observable_1.Observable.timer(500)).subscribe(({ document, value }) => this.updateEntities(document, value));
     }
     createNode(doc, parentId) {
         const transaction = doc.createTransaction();
@@ -11839,6 +11942,13 @@ let DataService = class DataService {
         }
         return Observable_1.Observable.of(true);
     }
+    updateEntitiesFromForm(document, value) {
+        for (let p in value) {
+            if (value.hasOwnProperty(p) && (value[p] === '*РАЗЛИЧНЫЕ*' || value.p === null))
+                delete value.p;
+        }
+        this.updateSubject.next({ document: document, value: value });
+    }
 };
 DataService = __decorate([
     core_1.Injectable(),
@@ -11870,11 +11980,15 @@ const signalr_client_1 = __webpack_require__("../../../../@aspnet/signalr-client
 let SignalRService = class SignalRService {
     constructor(ngZone) {
         this.ngZone = ngZone;
-        const connection = this.connection = new signalr_client_1.HubConnection('api/test');
-        connection.on('send', data => {
-            console.log(data);
+        const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6InRlbXBAand0LnJ1IiwidXNlcl9pZCI6IjU3ZGM1MWEzMzg5YjMwZmVkMWIxM2Y5MSIsIm5iZiI6MTUxMDI0NzE5MSwiZXhwIjoxNTEwMzMzNTkxLCJpYXQiOjE1MTAyNDcxOTEsImlzcyI6IkV4YW1wbGVJc3N1ZXIiLCJhdWQiOiJFeGFtcGxlQXVkaWVuY2UifQ.noOolXI8Nrg-d1NGhHeqV0pxUvAZ5AmBmp-gt4lGoPA';
+        const connection = this.connection = new signalr_client_1.HubConnection('api/test?token=' + token);
+        connection.on('DocumentCreated', data => {
+            console.log('document created', data);
         });
-        this.ngZone.runOutsideAngular(() => connection.start().then(() => connection.invoke('send', 'Hello')));
+        connection.on('DocumentUpdated', data => {
+            console.log('document updated', data);
+        });
+        this.ngZone.runOutsideAngular(() => connection.start().then(() => this.test()));
     }
     test() {
         this.connection.invoke('send', 'Hello');
